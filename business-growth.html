@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Business Growth - BusinessPro</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* SCROLL PROGRESS */
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: #35a7ff;
+            z-index: 1000;
+            box-shadow: 0 0 12px rgba(53, 167, 255, 0.6);
+        }
+
+        /* BACKGROUND GLOW */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 420px;
+            height: 420px;
+            top: 100px;
+            left: -180px;
+            background: rgba(53, 167, 255, 0.08);
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            animation: backgroundFloat 7s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            bottom: 50px;
+            right: -160px;
+            background: rgba(22, 140, 255, 0.07);
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            animation: backgroundFloat 8s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes backgroundFloat {
+
+            from {
+                transform: translateY(-20px);
+            }
+
+            to {
+                transform: translateY(25px);
+            }
+
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid #203752;
+            background: rgba(7, 17, 31, 0.88);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: inline-block;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s ease;
+        }
+
+        .logo:link,
+        .logo:visited,
+        .logo:hover,
+        .logo:active {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo span {
+            color: #35a7ff;
+        }
+
+        .logo:hover {
+            transform: translateY(-1px);
+        }
+
+        /* MAIN */
+
+        main {
+            padding: 90px 0;
+        }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+            text-align: center;
+            margin-bottom: 55px;
+            animation: heroReveal 0.9s ease-out both;
+        }
+
+        @keyframes heroReveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .icon {
+            display: inline-block;
+            font-size: 65px;
+            margin-bottom: 20px;
+            animation: rocketFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 8px 18px rgba(53, 167, 255, 0.15));
+        }
+
+        @keyframes rocketFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(-3deg);
+            }
+
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 65px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            color: #35a7ff;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #a6b7ca;
+            font-size: 18px;
+        }
+
+        /* CONTENT BOX */
+
+        .box {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #0d1c2e, #091727);
+            border: 1px solid #25415f;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.20);
+            animation: boxReveal 1s ease-out 0.15s both;
+        }
+
+        @keyframes boxReveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            top: -130px;
+            right: -100px;
+            border-radius: 50%;
+            background: rgba(53, 167, 255, 0.10);
+            filter: blur(30px);
+            transition: 0.6s ease;
+        }
+
+        .box:hover::before {
+            transform: scale(1.4);
+            background: rgba(53, 167, 255, 0.15);
+        }
+
+        .box h2 {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .box > p {
+            position: relative;
+            z-index: 2;
+            color: #a6b7ca;
+            margin-bottom: 20px;
+        }
+
+        /* FEATURES */
+
+        .features {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            position: relative;
+            overflow: hidden;
+            background: #091727;
+            border: 1px solid #25415f;
+            border-radius: 14px;
+            padding: 20px;
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .feature::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: -60px;
+            right: -60px;
+            border-radius: 50%;
+            background: rgba(53, 167, 255, 0.08);
+            filter: blur(20px);
+            transition: 0.4s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-6px);
+            border-color: #35a7ff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .feature:hover::before {
+            transform: scale(1.6);
+        }
+
+        .feature h3 {
+            position: relative;
+            z-index: 2;
+            color: #35a7ff;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            position: relative;
+            z-index: 2;
+            color: #a6b7ca;
+            margin: 0;
+        }
+
+        /* WHY SECTION */
+
+        .why-section {
+            margin-top: 70px;
+            text-align: center;
+            animation: boxReveal 1s ease-out 0.25s both;
+        }
+
+        .why-section h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .why-section > p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #91a4bb;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .why-card {
+            background: linear-gradient(145deg, #0d1c2e, #091727);
+            border: 1px solid #25415f;
+            border-radius: 16px;
+            padding: 25px 20px;
+            transition: 0.35s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            border-color: #35a7ff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .why-card strong {
+            display: block;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .why-card p {
+            color: #91a4bb;
+            font-size: 15px;
+        }
+
+        /* CTA */
+
+        .cta {
+            margin-top: 70px;
+            text-align: center;
+            padding: 45px 25px;
+            background: linear-gradient(145deg, #0f2035, #0a1626);
+            border: 1px solid #25415f;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: rgba(53, 167, 255, 0.07);
+            filter: blur(45px);
+        }
+
+        .cta h2,
+        .cta p,
+        .cta .buttons {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #91a4bb;
+            margin-bottom: 20px;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            margin: 5px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                color 0.3s ease;
+        }
+
+        .home {
+            border: 1px solid #35516f;
+            color: white;
+            background: rgba(10, 22, 38, 0.5);
+        }
+
+        .home:hover {
+            transform: translateY(-3px);
+            border-color: #35a7ff;
+            color: #35a7ff;
+            box-shadow: 0 8px 24px rgba(53, 167, 255, 0.12);
+        }
+
+        .contact {
+            background: #168cff;
+            color: white;
+            box-shadow: 0 8px 24px rgba(22, 140, 255, 0.20);
+        }
+
+        .contact:hover {
+            transform: translateY(-3px);
+            background: #35a7ff;
+            box-shadow: 0 12px 30px rgba(22, 140, 255, 0.35);
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #203752;
+            text-align: center;
+            padding: 30px;
+            color: #71869e;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            main {
+                padding: 60px 0;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .box {
+                padding: 25px;
+            }
+
+            .box h2 {
+                font-size: 24px;
+            }
+
+            .features,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-section {
+                margin-top: 55px;
+            }
+
+            .cta {
+                margin-top: 55px;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header>
+
+    <div class="container">
+
+        <a href="index.html#home" class="logo">
+            Business<span>Pro</span>
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <div class="icon">🚀</div>
+
+            <h1>
+                Business <span>Growth</span>
+            </h1>
+
+            <p>
+                Smart strategies designed to help your business
+                reach more customers and grow with confidence.
+            </p>
+
+        </div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <div class="box">
+
+            <h2>
+                Grow Your Business With Confidence
+            </h2>
+
+            <p>
+                BusinessPro helps businesses strengthen their
+                online presence, reach new customers and build
+                practical strategies for sustainable growth.
+            </p>
+
+            <p>
+                We combine creativity, technology and strategy
+                to create solutions focused on real business goals.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <h3>🎯 Customer Growth</h3>
+
+                    <p>
+                        Reach the right audience and attract new customers.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <h3>📊 Smart Strategy</h3>
+
+                    <p>
+                        Make better digital decisions for your business.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <h3>🌐 Online Presence</h3>
+
+                    <p>
+                        Build a stronger and more professional digital identity.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <h3>📈 Long-Term Growth</h3>
+
+                    <p>
+                        Create strategies designed for sustainable results.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WHY SECTION -->
+
+        <section class="why-section">
+
+            <h2>Why Choose Business Growth?</h2>
+
+            <p>
+                Growth is not just about getting more customers.
+                It's about building a stronger business that can keep growing.
+            </p>
+
+
+            <div class="why-grid">
+
+                <div class="why-card">
+
+                    <strong>🎯 Clear Direction</strong>
+
+                    <p>
+                        Focus your efforts on strategies that actually support your goals.
+                    </p>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <strong>⚡ Practical Solutions</strong>
+
+                    <p>
+                        Turn ideas into simple, useful actions that move your business forward.
+                    </p>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <strong>📈 Sustainable Growth</strong>
+
+                    <p>
+                        Build a digital foundation designed for long-term progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <h2>Ready to Grow?</h2>
+
+            <p>
+                Let's turn your business goals into a clear digital strategy.
+            </p>
+
+            <div class="buttons">
+
+                <a href="index.html#home" class="btn home">
+                    ← Back to Home
+                </a>
+
+                <a href="index.html#contact" class="btn contact">
+                    Let's Work Together
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 BusinessPro. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+
+        const scrollPercent =
+            (scrollTop / documentHeight) * 100;
+
+        document.getElementById("scrollProgress").style.width =
+            scrollPercent + "%";
+
+    });
+
+</script>
+
+
+</body>
+</html>
