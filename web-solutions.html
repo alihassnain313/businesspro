@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Web Solutions - BusinessPro</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #07111f;
+        color: white;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* SCROLL PROGRESS */
+
+    .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: #35a7ff;
+        z-index: 1000;
+        box-shadow: 0 0 12px rgba(53, 167, 255, 0.6);
+    }
+
+    /* BACKGROUND GLOW */
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 420px;
+        height: 420px;
+        top: 100px;
+        left: -180px;
+        background: rgba(53, 167, 255, 0.08);
+        border-radius: 50%;
+        filter: blur(90px);
+        pointer-events: none;
+        animation: backgroundFloat 7s ease-in-out infinite alternate;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        width: 350px;
+        height: 350px;
+        bottom: 50px;
+        right: -160px;
+        background: rgba(22, 140, 255, 0.07);
+        border-radius: 50%;
+        filter: blur(90px);
+        pointer-events: none;
+        animation: backgroundFloat 8s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes backgroundFloat {
+        from {
+            transform: translateY(-20px);
+        }
+
+        to {
+            transform: translateY(25px);
+        }
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+        padding: 25px 0;
+        border-bottom: 1px solid #203752;
+        background: rgba(7, 17, 31, 0.88);
+        backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo {
+        display: inline-block;
+        font-size: 25px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s ease;
+    }
+
+    .logo:link,
+    .logo:visited,
+    .logo:hover,
+    .logo:active {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .logo span {
+        color: #35a7ff;
+    }
+
+    .logo:hover {
+        transform: translateY(-1px);
+    }
+
+    /* MAIN */
+
+    main {
+        padding: 90px 0;
+    }
+
+    /* HERO */
+
+    .hero {
+        position: relative;
+        text-align: center;
+        margin-bottom: 55px;
+        animation: heroReveal 0.9s ease-out both;
+    }
+
+    @keyframes heroReveal {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .icon {
+        display: inline-block;
+        font-size: 65px;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 8px 20px rgba(53, 167, 255, 0.25));
+        animation: computerFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes computerFloat {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    h1 {
+        font-size: clamp(42px, 7vw, 65px);
+        line-height: 1.05;
+        margin-bottom: 20px;
+    }
+
+    h1 span {
+        color: #35a7ff;
+    }
+
+    .hero p {
+        max-width: 700px;
+        margin: auto;
+        color: #a6b7ca;
+        font-size: 18px;
+    }
+
+    /* MAIN BOX */
+
+    .box {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(145deg, #0d1c2e, #091727);
+        border: 1px solid #25415f;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.20);
+        animation: boxReveal 1s ease-out 0.15s both;
+    }
+
+    @keyframes boxReveal {
+        from {
+            opacity: 0;
+            transform: translateY(35px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .box::before {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        top: -130px;
+        right: -100px;
+        border-radius: 50%;
+        background: rgba(53, 167, 255, 0.10);
+        filter: blur(30px);
+        transition: 0.6s ease;
+    }
+
+    .box:hover::before {
+        transform: scale(1.4);
+        background: rgba(53, 167, 255, 0.15);
+    }
+
+    .box h2 {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .box > p {
+        position: relative;
+        z-index: 2;
+        color: #a6b7ca;
+        margin-bottom: 20px;
+    }
+
+    /* FEATURES */
+
+    .features {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .feature {
+        position: relative;
+        overflow: hidden;
+        background: #091727;
+        border: 1px solid #25415f;
+        border-radius: 14px;
+        padding: 20px;
+        transition:
+            transform 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
+    }
+
+    .feature::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: -60px;
+        right: -60px;
+        border-radius: 50%;
+        background: rgba(53, 167, 255, 0.08);
+        filter: blur(20px);
+        transition: 0.4s ease;
+    }
+
+    .feature:hover {
+        transform: translateY(-6px);
+        border-color: #35a7ff;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .feature:hover::before {
+        transform: scale(1.6);
+    }
+
+    .feature h3 {
+        position: relative;
+        z-index: 2;
+        color: #35a7ff;
+        margin-bottom: 8px;
+    }
+
+    .feature p {
+        position: relative;
+        z-index: 2;
+        color: #a6b7ca;
+        margin: 0;
+    }
+
+    /* WHY SECTION */
+
+    .why-section {
+        margin-top: 70px;
+        text-align: center;
+        animation: boxReveal 1s ease-out 0.25s both;
+    }
+
+    .why-section h2 {
+        font-size: 34px;
+        margin-bottom: 12px;
+    }
+
+    .why-section > p {
+        max-width: 650px;
+        margin: 0 auto 30px;
+        color: #91a4bb;
+    }
+
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .why-card {
+        background: linear-gradient(145deg, #0d1c2e, #091727);
+        border: 1px solid #25415f;
+        border-radius: 16px;
+        padding: 25px 20px;
+        transition: 0.35s ease;
+    }
+
+    .why-card:hover {
+        transform: translateY(-6px);
+        border-color: #35a7ff;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .why-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: white;
+    }
+
+    .why-card p {
+        color: #91a4bb;
+        font-size: 15px;
+    }
+
+    /* CTA */
+
+    .cta {
+        margin-top: 70px;
+        text-align: center;
+        padding: 45px 25px;
+        background: linear-gradient(145deg, #0f2035, #0a1626);
+        border: 1px solid #25415f;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta::before {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: rgba(53, 167, 255, 0.07);
+        filter: blur(45px);
+    }
+
+    .cta h2,
+    .cta p,
+    .cta .buttons {
+        position: relative;
+        z-index: 2;
+    }
+
+    .cta h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .cta p {
+        color: #91a4bb;
+        margin-bottom: 20px;
+    }
+
+    /* BUTTONS */
+
+    .buttons {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 14px 25px;
+        margin: 5px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            color 0.3s ease;
+    }
+
+    .home {
+        border: 1px solid #35516f;
+        color: white;
+        background: rgba(10, 22, 38, 0.5);
+    }
+
+    .home:hover {
+        transform: translateY(-3px);
+        border-color: #35a7ff;
+        color: #35a7ff;
+        box-shadow: 0 8px 24px rgba(53, 167, 255, 0.12);
+    }
+
+    .contact {
+        background: #168cff;
+        color: white;
+        box-shadow: 0 8px 24px rgba(22, 140, 255, 0.20);
+    }
+
+    .contact:hover {
+        transform: translateY(-3px);
+        background: #35a7ff;
+        box-shadow: 0 12px 30px rgba(22, 140, 255, 0.35);
+    }
+
+    /* FOOTER */
+
+    footer {
+        border-top: 1px solid #203752;
+        text-align: center;
+        padding: 30px;
+        color: #71869e;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+        main {
+            padding: 60px 0;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        .box {
+            padding: 25px;
+        }
+
+        .box h2 {
+            font-size: 24px;
+        }
+
+        .features,
+        .why-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .why-section {
+            margin-top: 55px;
+        }
+
+        .cta {
+            margin-top: 55px;
+        }
+
+        .btn {
+            display: block;
+            margin: 10px 0;
+        }
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header>
+
+
+<div class="container">
+
+    <a href="index.html#home" class="logo">
+        Business<span>Pro</span>
+    </a>
+
+</div>
+
+
+</header>
+
+<main>
+
+
+<div class="container">
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="icon">💻</div>
+
+        <h1>
+            Web <span>Solutions</span>
+        </h1>
+
+        <p>
+            Modern, responsive and professional websites
+            built to make your business stand out online.
+        </p>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="box">
+
+        <h2>
+            Build Your Online Presence
+        </h2>
+
+        <p>
+            We create modern websites designed to give your
+            business a professional and trustworthy digital identity.
+        </p>
+
+        <p>
+            Every website is built with responsive layouts,
+            clean design and a smooth experience across phones,
+            tablets and computers.
+        </p>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <h3>📱 Mobile Responsive</h3>
+
+                <p>
+                    Your website adapts beautifully to phones,
+                    tablets and desktop screens.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>⚡ Fast Performance</h3>
+
+                <p>
+                    Clean and optimized layouts designed
+                    for a smooth browsing experience.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>🎨 Modern Design</h3>
+
+                <p>
+                    Professional interfaces that make your
+                    business look modern and trustworthy.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>🔒 Reliable Experience</h3>
+
+                <p>
+                    Clear navigation and user-friendly design
+                    help visitors find what they need.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- WHY SECTION -->
+
+    <section class="why-section">
+
+        <h2>Why Choose Our Web Solutions?</h2>
+
+        <p>
+            A great website should not only look good.
+            It should work smoothly and help your business grow.
+        </p>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+
+                <strong>📐 Responsive Layout</strong>
+
+                <p>
+                    One professional website that fits different
+                    screen sizes and devices.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <strong>✨ Professional Experience</strong>
+
+                <p>
+                    Clean visuals and simple navigation designed
+                    to create a strong first impression.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <strong>🚀 Growth Ready</strong>
+
+                <p>
+                    A flexible online foundation that can grow
+                    alongside your business.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h2>Ready to Build Your Website?</h2>
+
+        <p>
+            Let's create a modern online presence for your business.
+        </p>
+
+        <div class="buttons">
+
+            <a href="index.html#home" class="btn home">
+                ← Back to Home
+            </a>
+
+            <a href="index.html#contact" class="btn contact">
+                Build My Website
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+</main>
+
+<footer>
+
+
+© 2026 BusinessPro. All Rights Reserved.
+
+
+</footer>
+
+<script>
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+
+        const scrollPercent =
+            (scrollTop / documentHeight) * 100;
+
+        document.getElementById("scrollProgress").style.width =
+            scrollPercent + "%";
+
+    });
+
+</script>
+
+</body>
+</html>
